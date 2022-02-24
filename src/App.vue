@@ -1,32 +1,29 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <section id="app">
+    <header>
+      <h1 class="hidden">Welcome to the Chat App!</h1>
+      <h2>Chat App with Vue CLI, Express and Socket.io</h2>
+    </header>
+
+    <h3>Dynamic Content Below:</h3>
+    <router-view></router-view> <!-- Empty container where all the stuff will go -->
+    <h3>Dynamic Content Above ^</h3>
+  </section>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<style lang="scss">
+  .hidden { display: none; }
 
-#nav {
-  padding: 30px;
-}
+  header {
+    text-align: center;
+    background-color: blue;
+    padding: 1em 0.8em;
+    color: white;    
+  }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  header h2 {
+    font-size: 2em;
+    margin-bottom: 0.8em;
+  }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>

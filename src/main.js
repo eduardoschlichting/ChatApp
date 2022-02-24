@@ -6,5 +6,5 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
-  render: h => h(App)
+  render: h => h(App) // renders the app file into index.html (public)
 }).$mount('#app')
