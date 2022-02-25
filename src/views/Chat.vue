@@ -10,11 +10,27 @@
         <!-- lay this out however you like - we're just using a list -->
         <ul id="current-users">
           <!-- render a users component for every connected user here -->
+          <CurrentUser 
+            v-for="user in usersConnected"
+            :key="user.user"
+           :username="user.user"/>
         </ul>
       </section>
 
       <!-- right hand side -> chat UI -->
        <section id="chat-messages-ui">
+         <h3 v-if="ChatUserName">
+           You joined
+         </h3>
+
+         <h3 v-if="userConnectedMessage">
+           {{ userConnectedMessage }}
+           </h3>
+
+         <h3 
+         v-if="userDisconnected">
+         {{ userDisconnected }} left the chat
+         </h3>
          <!-- render a component for every message -->
          <ChatMessage 
           v-for="msg in messages"
@@ -48,6 +64,7 @@
 import io from "socket.io-client";
 import vars from "@/env.js";
 import ChatMessage from "@/components/ChatMessage.vue";
+import CurrentUser from "@/components/CurrentUser.vue";
 
 export default {
   name: 'TheChatComponent',
@@ -59,15 +76,36 @@ export default {
   mounted() {
     let vm = this;
 
-    this.socket.on("CONNECTED", (id) => {
-      // debugger;
-      vm.socketID = id;
+    // this.socket.on("CONNECTED", (id) => {
+    //   // debugger;
+    //   // array of ids
+    //   vm.socketID = id;
+    // })
+
+    vm.socket.emit('user-connected', vm.users);
+
+    vm.socket.on('users-on-server', (data) => {
+      // console.log(data);
+      vm.usersConnected = [...vm.usersConnected, data];
+      vm.userConnectedMessage = data.messageConn
+      console.log(vm.usersConnected);
     })
 
-    this.socket.on('MESSAGE', (message) => {
+    vm.socket.on('disconnected', (data) => {
+      console.log(data);
+      vm.userDisconnected = data;
+
+      const userIndex = vm.usersConnected.indexOf(data);
+
+      vm.usersConnected.splice(userIndex, 1);
+      // vm.$delete(vm.usersConnected, userIndex);
+      debugger;
+    })
+
+    vm.socket.on('MESSAGE', (message) => {
       // debugger;
       vm.messages = [...vm.messages, message];
-      console.log(message);
+      // console.log(message);
     })
   },
 
@@ -81,9 +119,13 @@ export default {
   data() {
     return {
       // store the connection ID so we can user it later
-      socketID: '',
+      socketID: [],
+      users: this.ChatUserName,
+      usersConnected : [],
       message: '',
       messages: [],
+      userConnectedMessage: '',
+      userDisconnected: '',
 
       socket: io(vars.basePath, {
         withCredentials: false,
@@ -116,7 +158,8 @@ export default {
   },
 
   components: {
-    ChatMessage
+    ChatMessage,
+    CurrentUser
   }
 }
 </script>

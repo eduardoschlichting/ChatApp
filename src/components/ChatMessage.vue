@@ -1,5 +1,6 @@
 <template>
     <div class="message-panel">
+
         <div class="message-wrapper">
             <h1>{{ user }} says:</h1>
             <p class="message-text">
