@@ -15,16 +15,16 @@
         width: 40vw; 
         text-align: center; 
         padding: 1em; 
-        border: thin solid $border-color; 
+
         border-radius: $rounded; 
     }
 
     button { 
         font-size: 1em; 
         background-color: blue; 
-        color: $knockout-color;
+        color: $chat-text-color;
         padding: 0.8em 1.2em;
-        border: thin solid $border-color;
+        // border: thin solid $border-color;
         border-radius: $rounded;
         margin: 1em  0.5em;
     }

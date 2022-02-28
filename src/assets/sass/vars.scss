@@ -1,9 +1,18 @@
-$heading-color: blue;
-$main-text-color: #2c3e50;
-$knockout-color: white;
-$border-color: #666;
+$background-color: #FFFFFF;
+$chat-text-color: #B6B6C6;
+$highlight-color: #725BF2;
+$secondary-color: #EFECFB;
+$heading-color: #393938;
 
 $rounded: 0.5em;
 $hidden: none;
 
 $message-bg: #444;
+
+li {
+    list-style: none;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}

@@ -1,12 +1,15 @@
 <template>
+
     <div class="message-panel">
+            <h1>{{ user }}</h1>
 
         <div class="message-wrapper">
-            <h1>{{ user }} says:</h1>
+
             <p class="message-text">
                 {{ message }}
             </p>
         </div>
+            <p>{{ time }}</p>
     </div>
 </template>
 
@@ -17,7 +20,9 @@ export default {
 
     props: {
         user: String,
-        message: String
+        message: String,
+        time: String,
+
     }
 }
 </script>
