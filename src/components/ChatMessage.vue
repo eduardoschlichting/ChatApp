@@ -1,15 +1,19 @@
 <template>
 
-    <div class="message-panel">
-            <h1>{{ user }}</h1>
+    <div class="message" :class="from[0]">
+            <!-- <h1>{{ user }}</h1> -->
+        <div class="message-wrapper"  >
 
-        <div class="message-wrapper">
+            <div class="avatar"></div>                
 
+        <div class="text-wrapper" :class="from[1]">
             <p class="message-text">
                 {{ message }}
             </p>
         </div>
-            <p>{{ time }}</p>
+            
+        </div>
+        <p class="time">{{ time }}</p>
     </div>
 </template>
 
@@ -22,6 +26,7 @@ export default {
         user: String,
         message: String,
         time: String,
+        from: []
 
     }
 }

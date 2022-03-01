@@ -1,5 +1,9 @@
 .user-panel {
+    margin-bottom: .5em;
+    border-radius: $rounded;
+    
+    text-align: center;
     padding: 15px 30px;
-    background-color: lightblue;
-    color: black;
+    background-color: $highlight-color;
+    color: $background-color;
 }

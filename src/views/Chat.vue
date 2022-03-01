@@ -1,12 +1,14 @@
 <template>
   <main>
-    <h1 class="welcome-message">Welcome {{ ChatUserName }}!</h1>
+    <section class="welcome-wrapper">
+      <h1 class="welcome-message">Welcome to the SuperChat, {{ ChatUserName || 'Anonymous'}}! 👋</h1>
+    </section>
 
     <section id="chat">
       
       <!-- left hand side -> users go here -->
       <section id="chat-users-ui">
-        <h2>Current Users:</h2>
+        <h2>Online users</h2>
 
         <!-- lay this out however you like - we're just using a list -->
         <ul id="current-users">
@@ -20,21 +22,28 @@
             v-for="user in usersConnected"
             :key="user.user"
            :username="user"/>
+
+          
         </ul>
       </section>
 
       <!-- right hand side -> chat UI -->
        <section id="chat-messages-ui">
-
-         <h3 v-if="ChatUserName">
+         <h3 v-if="ChatUserName || 'Anonymous'" class="joined">
            You joined
          </h3>
 
-        <ChatJoin v-if="userConnectedMessage" :message="userConnectedMessage"/>
-        <ChatDisconnected v-if="userDisconnectedMessage" :message="userDisconnectedMessage"/>
+        <ChatJoin 
+          v-if="userConnectedMessage"
+          :message="userConnectedMessage"/>
+
+        <ChatDisconnected 
+          v-if="userDisconnectedMessage"         
+          :message="userDisconnectedMessage"/>
+
          <!-- render a component for every message -->
          <ChatMessage
-         :class="ChatUserName === msg.user ? 'you' : 'other'"
+          :from="ChatUserName === msg.user ? userClasses[0] : userClasses[1]"
           v-for="msg in messages"
           :key="msg.id"
           :message="msg.message"
@@ -43,9 +52,9 @@
           
          />
 
-          <h3>
-           {{ userTyping }}
-         </h3>
+         
+
+           <h4 class="user-typing">{{ userTyping }}</h4>
 
        </section>
 
@@ -128,7 +137,8 @@ export default {
 
     vm.socket.on('user-typing', (data) => {
         // sets the user typing
-        vm.userTyping = `${data.user} is typing...`;
+          vm.userTyping = `${data.user} is typing...`;
+        
       
     })
   },
@@ -138,7 +148,6 @@ export default {
       // trim gets rid of the whitespace and evaluates if it is empty after it trims
       return this.message.trim() === '';
     }
-
   },
 
   data() {
@@ -147,11 +156,18 @@ export default {
       // socketID: [],
       usersConnected : [],
       message: '',
+      messageValue: 0,
       messages: [],
       timeNow: '',
       userConnectedMessage: '',
       userDisconnectedMessage: '',
       userTyping: '',
+
+      userClasses: [
+        ['you', 'you_inner'],
+        ['other', 'other_inner']
+
+      ],
 
       socket: io(vars.basePath, {
         withCredentials: false,
@@ -179,13 +195,14 @@ export default {
       if(this.hasMessage == false && event.keyCode == 13 )
        {
          this.sendMessage();
+        //  console.log(this.valueInput);
 
         //  window.scrollTo(0,document.querySelector('#chat-messages-ui').scrollHeight);
         
 
       } else {
           this.socket.emit('TYPING', { user: this.ChatUserName || 'anonymous' });
-        }
+      }
     }
 
   },

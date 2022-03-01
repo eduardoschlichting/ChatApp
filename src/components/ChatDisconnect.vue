@@ -1,5 +1,5 @@
 <template>
-    <div class="disconnected">
+    <div class="left">
         <h3> {{ message }}</h3>
     </div>
 </template>
@@ -13,3 +13,7 @@ export default {
     }
 }
 </script>
+
+<style lang="scss">
+     @import "@/assets/sass/chat.scss";
+</style>

@@ -1,9 +1,29 @@
 .disabled { opacity: 0.4; }
 
-* {
-    outline: 1px solid black;
-}
+// * {
+//     outline: 1px solid black;
+// }
 // .typing { opacity: 1;}
+
+.welcome-wrapper {
+
+    width: 88%;
+    margin: 0 auto;
+    margin-bottom: 2em;
+    padding: .5em;
+    background-color: $highlight-color;
+    border-radius: $rounded;
+    box-shadow: 6px 8px 15px 5px rgba(114,91,242,0.10);
+    
+
+    .welcome-message {
+        font-size: 1.3em;
+        font-weight: 700;
+        color: $background-color;
+        margin: 0.8em 0;
+        padding-left: 0.8em;
+    }
+}
 
 #chat { 
     display: grid;
@@ -25,30 +45,57 @@
    border-radius: .5em;
   }
 
-.welcome-message {
-    font-size: 1.3em;
-    margin: 0.8em 0;
-    padding-left: 0.8em;
-}
+
 
 // #chat-users-ui {
 //     border-right: thin solid #333;
 // }
-
-#chat-users-ui, #chat-messages-ui {
-    padding: 0.8em;
-    // position: relative;
-    display: flex;
-    flex-direction: column;
-}
+// #chat-users-ui, #chat-messages-ui {
+//     // padding: 1em;
+//     // position: relative;
+//     display: flex;
+//     flex-direction: column;
+// }
 
 #chat-messages-ui {
+    padding: 1em;
     height: 400px;
     overflow-y: scroll;
+    // background-color: $se;
 }
 
 #chat-users-ui {
-    h2 { font-size: 1.3em; }
+
+    width: 180px;
+    // background-color: $secondary-color;
+    // border-radius: $rounded;
+    padding: 1em;
+    margin-right: .5em;
+
+    h2 { 
+        font-size: 1.2em;
+        font-weight: 700;
+        margin-top: .5em;
+        color: $highlight-color;
+     }
+}
+
+
+// miscellaneous
+.user-typing {
+    font-size: .8em;
+    font-style: italic;
+    color: $chat-text-color;
+
+}
+
+.joined, .left {
+    font-size: .8em;
+    color: $chat-text-color;
+    font-style: italic;
+    margin-bottom: .5em;
+    text-align: center;
+    // margin: 0 auto;
 }
 
 #current-users { margin-top: 1em; }
@@ -73,12 +120,23 @@ input {
     position: relative;
     border: none;
     border-radius: 50px;
-    padding: 1em;
+    padding: .8em;
+    padding-left: 1em;
     display: flex;
     align-items: center;
     font-size: 1em;
     resize: none;
     background-color: $secondary-color;
+}
+
+input::placeholder {
+    font-style: italic;
+    color: $chat-text-color;
+    font-size: .9em;
+}
+
+input:focus {
+    border: solid $highlight-color;
 }
 
 #sendMessage {

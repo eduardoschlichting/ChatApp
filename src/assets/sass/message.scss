@@ -1,33 +1,75 @@
-.message-panel {
+.message {
     color: $chat-text-color;
-
-    margin-bottom: 1em;
-    padding: 1em;
+    width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
 
+    margin-bottom: .5em;
+
     .message-wrapper {
-        margin-left: 1em;
-        
+        display: flex;
+        align-items: flex-end;
+        gap: .5em;
+    }
+
+        h1 {
+            font-size: .8em;
+            font-weight: 700;
+        }
+
+        p {
+            word-break: break-word;
+            white-space: normal;
+        }
+
+        .time {
+            font-size: .7em;
+            font-style: italic;
+        }
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 2em;
+            background-color: $highlight-color;
+        }
+
+    .text-wrapper {
+        max-width: 70%;
+
+        padding: 1em;
+
     }
 }
 
 .you {
-    background-color: $highlight-color;
     align-self: flex-end;
-    border-radius: .5em .5em 0 .5em;
-
-    display: flex;
-        flex-direction: column;
-        gap: 1em;
+    align-items: flex-end;
+   
+    gap: .5em;
 }
 
-.other {
-    align-self: flex-start;
-    border-radius: .5em .5em .5em 0;
-    background-color: $secondary-color;
+.you_inner {
+    border-radius: 1.5em 1.5em 0 1.5em;
+    background-color: $highlight-color;
+    color: $background-color;
+    // padding: .8em;
+    // width: 100%;
+}
 
+
+.other {
+    // align-self: flex-start;
     display: flex;
-        flex-direction: column;
-        gap: 1em;
+    flex-direction: column;
+    align-items: flex-start;
+   
+    gap: .3em;
+}
+
+.other_inner {
+    border-radius: 1.5em 1.5em 1.5em 0;
+    background-color: $secondary-color;
+    // padding: .8em;
+    // width: 100%;
 }
