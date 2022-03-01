@@ -13,7 +13,7 @@
     padding: .5em;
     background-color: $highlight-color;
     border-radius: $rounded;
-    box-shadow: 6px 8px 15px 5px rgba(114,91,242,0.10);
+    box-shadow: 6px 8px 15px 5px rgba(114,91,242,0.15);
     
 
     .welcome-message {
@@ -61,7 +61,6 @@
     padding: 1em;
     height: 400px;
     overflow-y: scroll;
-    // background-color: $se;
 }
 
 #chat-users-ui {
@@ -136,7 +135,7 @@ input::placeholder {
 }
 
 input:focus {
-    border: solid $highlight-color;
+    border: 1px solid $highlight-color;
 }
 
 #sendMessage {

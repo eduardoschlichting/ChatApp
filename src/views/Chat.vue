@@ -21,7 +21,9 @@
           <CurrentUser 
             v-for="user in usersConnected"
             :key="user.user"
-           :username="user"/>
+           :username="user"
+           :avatar="ChatUserName === user.user ? 'avatar_1' : 'avatar_2'"
+           />
 
           
         </ul>
@@ -49,6 +51,8 @@
           :message="msg.message"
           :user="msg.user"
           :time="msg.time"
+          :avatar="ChatUserName === msg.user ? 'avatar_1' : 'avatar_2'"
+          
           
          />
 
@@ -133,15 +137,27 @@ export default {
       vm.messages = [...vm.messages, message];
       // when we get the message, set the user typing to none
       vm.userTyping = '';
+
     })
 
     vm.socket.on('user-typing', (data) => {
         // sets the user typing
-          vm.userTyping = `${data.user} is typing...`;
-        
+        vm.userTyping = `${data.user} is typing...`;
+        setTimeout(function() {
+          vm.userTyping = '';
+        }, 2000);
+
       
     })
   },
+
+  updated() {
+      const chatWin = document.querySelector('#chat-messages-ui');
+
+      if(chatWin) {
+        chatWin.scrollTop = chatWin.scrollHeight;
+      }
+    },
 
   computed: {
     hasMessage: function () {
@@ -164,7 +180,7 @@ export default {
       userTyping: '',
 
       userClasses: [
-        ['you', 'you_inner'],
+        ['you', 'you_inner', 'you_message'],
         ['other', 'other_inner']
 
       ],
@@ -195,11 +211,7 @@ export default {
       if(this.hasMessage == false && event.keyCode == 13 )
        {
          this.sendMessage();
-        //  console.log(this.valueInput);
-
-        //  window.scrollTo(0,document.querySelector('#chat-messages-ui').scrollHeight);
-        
-
+      
       } else {
           this.socket.emit('TYPING', { user: this.ChatUserName || 'anonymous' });
       }
@@ -218,4 +230,5 @@ export default {
 
 <style lang="scss">
   @import "@/assets/sass/chat.scss";
+  @import "@/assets/sass/message.scss";
 </style>
