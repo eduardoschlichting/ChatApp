@@ -22,7 +22,7 @@
             v-for="user in usersConnected"
             :key="user.user"
            :username="user"
-           :avatar="ChatUserName === user.user ? 'avatar_1' : 'avatar_2'"
+           :avatar="ChatUserName === user ? 'avatar_1_online' : 'avatar_2_online'"
            />
 
           
@@ -145,7 +145,7 @@ export default {
         vm.userTyping = `${data.user} is typing...`;
         setTimeout(function() {
           vm.userTyping = '';
-        }, 2000);
+        }, 3000);
 
       
     })

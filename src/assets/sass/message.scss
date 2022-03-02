@@ -32,24 +32,12 @@
             height: 50px;
             // border: 1px solid red;
             border-radius: 2em;
-            background-color: $highlight-color;
+            // background-color: $highlight-color;
             // background-image: url('~@/assets/images/emoji_2.png');
-            background-size: 65%;
+            // background-size: 5%;
             background-repeat: no-repeat;
             background-position: center;
-            bac
-
-            img {
-                width: 80%;
-            }
-        }
-
-        .avatar_1 {
-            background-image: url('~@/assets/images/emoji_1.png');
-        }
-
-        .avatar_2 {
-            background-image: url('~@/assets/images/emoji_2.png');
+            background-size: contain;
         }
 
     .text-wrapper {
@@ -58,6 +46,33 @@
         padding: 1em;
 
     }
+}
+
+.avatar_1 {
+    background-image: url('~@/assets/images/emoji_1.png');
+}
+
+.avatar_1_online {
+    border-radius: 2em;
+    background-image: url('~@/assets/images/emoji_1.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    min-height: 40px;
+    min-width: 40px;
+}
+
+.avatar_2 {
+    background-image: url('~@/assets/images/emoji_2.png');
+}
+
+.avatar_2_online {
+    background-image: url('~@/assets/images/emoji_2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    min-height: 40px;
+    min-width: 40px;
 }
 
 .you {

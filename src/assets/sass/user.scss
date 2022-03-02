@@ -1,9 +1,23 @@
 .user-panel {
     margin-bottom: .5em;
     border-radius: $rounded;
-    
-    text-align: center;
-    padding: 15px 30px;
+    padding: .5em  1em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    // text-align: center;
+
     background-color: $highlight-color;
     color: $background-color;
+
+    .user-wrapper {
+        display: flex;
+        align-items: center;
+        gap: .5em;
+
+        p {
+            word-break: break-word;
+            white-space: normal;
+        }
+    }
 }

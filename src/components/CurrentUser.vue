@@ -1,10 +1,14 @@
 <template>
         <li class="user-panel">
+
+        <div class="user-wrapper">
             <div class="avatar" :class="avatar">
                 <!-- <img src="~@/assets/images/emoji_1.png" alt=""> -->
             </div>
 
-            {{ username }}
+            <p>{{ username }}</p>   
+        </div> 
+            
         </li>
 </template>
 
@@ -24,4 +28,5 @@ export default {
     @import "@/assets/sass/user.scss";
     @import "@/assets/sass/chat.scss";
     @import "@/assets/sass/message.scss";
+
 </style>
