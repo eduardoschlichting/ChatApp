@@ -5,13 +5,14 @@
 // }
 // .typing { opacity: 1;}
 
+
 .welcome-wrapper {
 
     width: 88%;
     margin: 0 auto;
     margin-bottom: 2em;
     padding: .5em;
-    background-color: $highlight-color;
+    background-color: $background-color;
     border-radius: $rounded;
     box-shadow: 6px 8px 15px 5px rgba(114,91,242,0.15);
     
@@ -19,7 +20,7 @@
     .welcome-message {
         font-size: 1.3em;
         font-weight: 700;
-        color: $background-color;
+        color: $highlight-color;
         margin: 0.8em 0;
         padding-left: 0.8em;
     }
@@ -28,24 +29,13 @@
 #chat { 
     display: grid;
     grid-template-columns: 1fr 3fr;
+    padding: 1em;
     width: 90%;
     margin: 0 auto;
     background-color: $background-color;
     border-radius: $rounded;
     box-shadow: 6px 8px 15px 5px rgba(114,91,242,0.10);
 }
-
-#chat-messages-ui::-webkit-scrollbar {
-   background: none;
-   width: .5em;
-  }
-
-#chat-messages-ui::-webkit-scrollbar-thumb {
-   background-color: $secondary-color;
-   border-radius: .5em;
-  }
-
-
 
 // #chat-users-ui {
 //     border-right: thin solid #333;
@@ -70,6 +60,11 @@
     border-radius: $rounded;
     padding: 1em;
     margin-right: .5em;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    display: flex;
+    flex-direction: column;
+    // overflow-y: sc;
 
     h2 { 
         font-size: 1.2em;
@@ -77,6 +72,12 @@
         margin-top: .5em;
         color: $highlight-color;
      }
+}
+
+.joins {
+    // display: flex;
+    justify-content: flex-end;
+    
 }
 
 
@@ -110,7 +111,11 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+
+    
 }
+
+
 
 input { 
     width: 80%; 
@@ -135,7 +140,7 @@ input::placeholder {
 }
 
 input:focus {
-    border: 1px solid $highlight-color;
+    outline: 2px solid $highlight-color;
 }
 
 #sendMessage {
@@ -149,3 +154,4 @@ input:focus {
 
     i { color: blue; }
 }
+

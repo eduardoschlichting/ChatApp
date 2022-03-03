@@ -11,27 +11,31 @@
         <h2>Online users</h2>
 
         <!-- lay this out however you like - we're just using a list -->
-        <ul id="current-users">
+        <div id="current-users">
           <!-- render a users component for every connected user here -->
           <!-- // when the user itself joins -->
           <!-- <li class="user-panel">
             {{ ChatUserName }}
         </li> -->
-
+        <transition-group
+          tag="ul"
+          enter-active-class="animate__animated animate__fadeInUp"
+          leave-active-class="animate__animated animate__fadeOutDown"
+        >
           <CurrentUser 
-            v-for="user in usersConnected"
-            :key="user.user"
+            v-for="(user, index) in usersConnected"
+            :key="index"
            :username="user"
            :avatar="ChatUserName === user ? 'avatar_1_online' : 'avatar_2_online'"
            />
 
+        </transition-group>
           
-        </ul>
-      </section>
+          
+        </div>
 
-      <!-- right hand side -> chat UI -->
-       <section id="chat-messages-ui">
-         <h3 v-if="ChatUserName || 'Anonymous'" class="joined">
+        <div class="joins">
+            <h3 v-if="ChatUserName || 'Anonymous'" class="joined">
            You joined
          </h3>
 
@@ -42,19 +46,28 @@
         <ChatDisconnected 
           v-if="userDisconnectedMessage"         
           :message="userDisconnectedMessage"/>
+          </div>
+      </section>
+
+      <!-- right hand side -> chat UI -->
+       <section id="chat-messages-ui">
 
          <!-- render a component for every message -->
+        <ul>
+          <transition-group
+          enter-active-class="animate__animated animate__fadeInUp"
+          tag="ul">
          <ChatMessage
           :from="ChatUserName === msg.user ? userClasses[0] : userClasses[1]"
-          v-for="msg in messages"
-          :key="msg.id"
+          v-for="(msg, id) in messages"
+          :key="id"
           :message="msg.message"
           :user="msg.user"
           :time="msg.time"
           :avatar="ChatUserName === msg.user ? 'avatar_1' : 'avatar_2'"
-          
-          
          />
+         </transition-group>
+      </ul>
 
          
 
@@ -135,6 +148,7 @@ export default {
     vm.socket.on('MESSAGE', (message) => {
 
       vm.messages = [...vm.messages, message];
+      this.showMessage = true;
       // when we get the message, set the user typing to none
       vm.userTyping = '';
 
@@ -178,6 +192,7 @@ export default {
       userConnectedMessage: '',
       userDisconnectedMessage: '',
       userTyping: '',
+      showMessage: false,
 
       userClasses: [
         ['you', 'you_inner', 'you_message'],

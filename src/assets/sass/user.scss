@@ -13,11 +13,18 @@
     .user-wrapper {
         display: flex;
         align-items: center;
-        gap: .5em;
+        gap: .2em;
 
         p {
             word-break: break-word;
             white-space: normal;
+        }
+
+        .online {
+            min-width: 10px;
+            min-height: 10px;
+            background-color: greenyellow;
+            border-radius: $rounded;
         }
     }
 }

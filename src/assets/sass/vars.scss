@@ -20,4 +20,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    background-color: $highlight-color;
 }
+
+.animate__animated.animate__fadeIn, 
+.animate__animated.animate__fadeOut, 
+.animate__animated.animate__fadeInUp,
+.animate__animated.animate__fadeOut
+
+{
+    --animate-duration: .5s;
+  }

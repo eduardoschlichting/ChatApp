@@ -2,6 +2,8 @@
         <li class="user-panel">
 
         <div class="user-wrapper">
+            <div class="online"></div>
+
             <div class="avatar" :class="avatar">
                 <!-- <img src="~@/assets/images/emoji_1.png" alt=""> -->
             </div>

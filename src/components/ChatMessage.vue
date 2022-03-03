@@ -1,6 +1,6 @@
 <template>
-
-    <div class="message" :class="from[0]">
+<li>
+    <div class="message" :class="from[0]" :key="user">
             <!-- <h1>{{ user }}</h1> -->
         <div class="message-wrapper" :class="from[2]">
 
@@ -17,6 +17,7 @@
         </div>
         
     </div>
+    </li>
 </template>
 
 <script>

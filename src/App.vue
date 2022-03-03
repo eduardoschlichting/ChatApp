@@ -6,7 +6,13 @@
     </header> -->
 
     <!-- <h3>Dynamic Content Below:</h3> -->
+    <transition
+      mode="out-in"
+      enter-active-class="animate__animated animate__fadeIn"
+      leave-active-class="animate__animated animate__fadeOut"
+    >
     <router-view></router-view> <!-- Empty container where all the stuff will go -->
+    </transition>
     <!-- <h3>Dynamic Content Above ^</h3> -->
   </section>
 </template>
