@@ -46,7 +46,7 @@ Some of the features of the app are:
 
 <img alt="Chat App" src="./src/assets/images/chat_app.gif">
 
-This was a very simple build for learning purposes and can - and will - be expanded in the future. Some of the next features that can be added
+This was a very simple build for learning purposes but can - and will - be expanded in the future. Some of the next features that can be added
 
 - Rooms
 - Private messaging
