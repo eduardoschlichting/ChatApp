@@ -18,6 +18,7 @@
             {{ ChatUserName }}
         </li> -->
         <transition-group
+          name="list"
           tag="ul"
           enter-active-class="animate__animated animate__fadeInUp"
           leave-active-class="animate__animated animate__fadeOutDown"
@@ -56,6 +57,7 @@
         <ul>
           <transition-group
           enter-active-class="animate__animated animate__fadeInUp"
+          name="list"
           tag="ul">
          <ChatMessage
           :from="ChatUserName === msg.user ? userClasses[0] : userClasses[1]"

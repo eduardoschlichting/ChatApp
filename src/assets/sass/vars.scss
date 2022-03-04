@@ -28,7 +28,14 @@ body {
 .animate__animated.animate__fadeOut, 
 .animate__animated.animate__fadeInUp,
 .animate__animated.animate__fadeOut
-
 {
     --animate-duration: .5s;
+  }
+
+  .list-enter-active {
+      position: absolute;
+  }
+
+  .list-move {
+    transition: all 0.5s ease;
   }

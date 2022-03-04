@@ -39,7 +39,4 @@ export default {
 <style lang="scss">
     @import "@/assets/sass/message.scss";
 
-    // .avatar {
-    //     background-image: url('~@/assets/images/emoji_1.png');
-    // }
 </style>
