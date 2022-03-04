@@ -1,31 +1,63 @@
 .hidden { display: $hidden }
 .disabled { opacity: 0.4; }
 
+body {
+    background-color: $highlight-color;
+}
+
 #welcome-wrapper {
     text-align: center;
 
     h2 { 
         font-size: 1.5em;
+        font-weight: bold;
         margin: 30px 0 10px 0;
+        color: $background-color;
+        margin-bottom: 1em;
     }
 
     input { 
-        margin-top: 1em; 
-        font-size: 1em; 
-        width: 40vw; 
-        text-align: center; 
-        padding: 1em; 
-        border: thin solid $border-color; 
-        border-radius: $rounded; 
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 1em;
+    border: none;
+    border-radius: 50px;
+    padding: .8em;
+    padding-left: 1em;
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    resize: none;
+    background-color: $secondary-color;
+    color: $highlight-color;
+    }
+
+    input::placeholder {
+        font-style: italic;
+        color: $chat-text-color;
+        font-size: .9em;
+    }
+    
+    input:focus {
+        // border: 1px solid $highlight-color;
+        outline: 2px solid $highlight-color;
     }
 
     button { 
         font-size: 1em; 
-        background-color: blue; 
-        color: $knockout-color;
+        background-color: $background-color; 
+        color: $highlight-color;
+        border: none;
         padding: 0.8em 1.2em;
-        border: thin solid $border-color;
-        border-radius: $rounded;
+        // border: thin solid $border-color;
+        border-radius: 2em;
         margin: 1em  0.5em;
+        box-shadow: 6px 8px 15px 5px rgba(114,91,242,0.10);
+        transition: all 300ms;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+        cursor: pointer;
     }
 }

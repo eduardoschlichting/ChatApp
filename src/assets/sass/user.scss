@@ -1,0 +1,30 @@
+.user-panel {
+    margin-bottom: .5em;
+    border-radius: $rounded;
+    padding: .5em  1em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    // text-align: center;
+
+    background-color: $highlight-color;
+    color: $background-color;
+
+    .user-wrapper {
+        display: flex;
+        align-items: center;
+        gap: .2em;
+
+        p {
+            word-break: break-word;
+            white-space: normal;
+        }
+
+        .online {
+            min-width: 10px;
+            min-height: 10px;
+            background-color: greenyellow;
+            border-radius: $rounded;
+        }
+    }
+}

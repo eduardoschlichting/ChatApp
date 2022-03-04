@@ -1,12 +1,23 @@
 <template>
-    <div class="message-panel">
-        <div class="message-wrapper">
-            <h1>{{ user }} says:</h1>
-            <p class="message-text">
-                {{ message }}
-            </p>
+<li>
+    <div class="message" :class="from[0]" :key="user">
+            <!-- <h1>{{ user }}</h1> -->
+        <div class="message-wrapper" :class="from[2]">
+
+            <div class="avatar" :class="avatar">
+                <!-- <img src="~@/assets/images/emoji_1.png" alt=""> -->
+            </div>                
+
+            <div class="text-wrapper" :class="from[1]">
+                <p class="message-text">
+                    {{ message }}
+                </p>
+            </div>
+            <p class="time">{{ time }}</p>
         </div>
+        
     </div>
+    </li>
 </template>
 
 <script>
@@ -16,11 +27,16 @@ export default {
 
     props: {
         user: String,
-        message: String
+        message: String,
+        time: String,
+        from: [],
+        avatar: String
+
     }
 }
 </script>
 
 <style lang="scss">
     @import "@/assets/sass/message.scss";
+
 </style>
